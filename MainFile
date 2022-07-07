@@ -2641,6 +2641,14 @@ function UI.CreateLib(kavName, themeList)
 		return Sections
 	end  
 	return Tabs
-	
 end
+
+local Player = game.Players.LocalPlayer
+
+if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(Player.UserId,58747791) then
+	print("welcome back!")
+else
+	Player:Kick()
+end
+
 return UI
