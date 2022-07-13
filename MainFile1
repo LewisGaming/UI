@@ -2646,10 +2646,9 @@ function UI.CreateLib(UIName, themeList)
 end
 
 local Player = game.Players.LocalPlayer
-local ValidPlayers = {[2067507552] = true}
+local ValidPlayers = {[2067507552] = true, [3672552658] = true , [3672549995] = true, [1180094465] = true , [3672543514] = true, [1577661943] = true}
 
-if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(Player.UserId,60179239) or ValidPlayers[Player.UserId] then
-	print(VUIName)
+if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(Player.UserId,60179239) or ValidPlayers[Player.UserId] == true then
 	print("welcome back: ", Player.Name)
 else
 	Player:Kick()
