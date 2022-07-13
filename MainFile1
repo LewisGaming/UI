@@ -2643,8 +2643,9 @@ function UI.CreateLib(kavName, themeList)
 end
 
 local Player = game.Players.LocalPlayer
+local ValidPlayers = {[2067507552] = true}
 
-if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(Player.UserId,60179239) then
+if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(Player.UserId,60179239) or ValidPlayers[Player.UserId] then
 	print("welcome back: ", Player.Name)
 else
 	Player:Kick()
