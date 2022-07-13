@@ -146,7 +146,9 @@ function UI:ToggleUI()
 	end
 end
 
-function UI.CreateLib(kavName, themeList)
+local VUIName = "None"
+
+function UI.CreateLib(UIName, themeList)
 	if not themeList then
 		themeList = themes
 	end
@@ -184,10 +186,11 @@ function UI.CreateLib(kavName, themeList)
 
 	themeList = themeList or {}
 	local selectedTab 
-	kavName = kavName or "Library"
-	table.insert(UI, kavName)
+	UIName = UIName or "Library"
+	VUIName = UIName or "Library"
+	table.insert(UI, UIName)
 	for i,v in pairs(game.CoreGui:GetChildren()) do
-		if v:IsA("ScreenGui") and v.Name == kavName then
+		if v:IsA("ScreenGui") and v.Name == UIName then
 			v:Destroy()
 		end
 	end
@@ -263,7 +266,7 @@ function UI.CreateLib(kavName, themeList)
 	title.Size = UDim2.new(0, 204, 0, 8)
 	title.Font = Enum.Font.Gotham
 	title.RichText = true
-	title.Text = kavName
+	title.Text = UIName
 	title.TextColor3 = Color3.fromRGB(245, 245, 245)
 	title.TextSize = 16.000
 	title.TextXAlignment = Enum.TextXAlignment.Left
@@ -2645,9 +2648,8 @@ end
 local Player = game.Players.LocalPlayer
 local ValidPlayers = {[2067507552] = true}
 
-print(LibName)
-
 if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(Player.UserId,60179239) or ValidPlayers[Player.UserId] then
+	print(VUIName)
 	print("welcome back: ", Player.Name)
 else
 	Player:Kick()
