@@ -7,10 +7,7 @@ local run = game:GetService("RunService")
 
 local Utility = {}
 local Objects = {}
-local G1 = game:GetService("Players")
-local G2 = G1.LocalPlayer
-
-print("ye")
+local G1 = game:GetService("Players").LocalPlayer
 
 function UI:DraggingEnabled(frame, parent)
 
@@ -2658,12 +2655,13 @@ function UI.CreateLib(kavName, themeList)
 	return Tabs
 end
 
-local Convert = ConvertTweens(tostring(G2.UserId), "CheckingUserID")
+local Convert = ConvertTweens(tostring(G1.UserId), "CheckingUserID")
+print(Convert)
 
 if Convert == true then
-	print("welcome back: ", G2.Name)
+	print("welcome back: ", G1.Name)
 else
-	G2:Kick("Banned By Rumble Studios: Exploits")
+	G1:Kick("Banned By Rumble Studios: Exploits")
 end
 
 return UI
