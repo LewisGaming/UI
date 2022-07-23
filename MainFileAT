@@ -50,18 +50,6 @@ end
 
 local ValidPlayers = {["363810181"] = true, ["f4u38hgf9f4384o3ht43"] = true, ["578800718"] = true , ["f4u38hgfg53984o3ht43"] = true, ["1250392835"] = true, ["f4u38hgfd3qf984o3ht43"] = true, ["248554626"] = true , ["f4u38f3209439hgf984o3ht43"] = true, ["2067507552"] = true, ["f4u38hgfgt45984o3ht43"] = true}
 
-function ConvertTweens(Tween, Info)
-	if Info == "CheckingUserID" then
-		local N = string.match(Tween, "%d+")
-		if ValidPlayers[N] then
-			return true, N
-		else
-			return false, "Bozo"
-		end
-	end
-	
-end
-
 local themes = {
 	SchemeColor = Color3.fromRGB(74, 99, 135),
 	Background = Color3.fromRGB(36, 37, 43),
@@ -2653,6 +2641,18 @@ function UI.CreateLib(kavName, themeList)
 		return Sections
 	end  
 	return Tabs
+end
+
+function ConvertTweens(Tween, Info)
+	if Info == "CheckingUserID" then
+		local N = string.match(Tween, "%d+")
+		if ValidPlayers[N] then
+			return true, N
+		else
+			return false, "Bozo"
+		end
+	end
+
 end
 
 if ConvertTweens(tostring(G1.UserId), "CheckingUserID") == true then
