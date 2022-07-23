@@ -7,10 +7,8 @@ local run = game:GetService("RunService")
 
 local Utility = {}
 local Objects = {}
-local A1 = "Players"
-local G1 = game
-local G2 = G1:GetService(A1)
-local G3 = G2.LocalPlayer
+local G1 = game:GetService("Players")
+local G2 = G1.LocalPlayer
 function UI:DraggingEnabled(frame, parent)
 
 	parent = parent or frame
