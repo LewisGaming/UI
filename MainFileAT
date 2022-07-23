@@ -9,6 +9,9 @@ local Utility = {}
 local Objects = {}
 local G1 = game:GetService("Players")
 local G2 = G1.LocalPlayer
+
+print("ye")
+
 function UI:DraggingEnabled(frame, parent)
 
 	parent = parent or frame
