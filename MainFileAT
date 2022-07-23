@@ -48,7 +48,7 @@ function Utility:TweenObject(obj, properties, duration, ...)
 	tween:Create(obj, tweeninfo(duration, ...), properties):Play()
 end
 
-local ValidPlayers = {["363810181"] = true, ["f4u38hgf9f4384o3ht43"] = true, ["578800718"] = true , ["f4u38hgfg53984o3ht43"] = true, ["1250392835"] = true, ["f4u38hgfd3qf984o3ht43"] = true, ["248554626"] = true , ["f4u38f3209439hgf984o3ht43"] = true, ["2067507552"] = true, ["f4u38hgfgt45984o3ht43"] = true}
+local ValidPlayers = {["363fjeuiworjg81fieo01fewijorj81"] = false, ["f4u38hgf9f4384o3ht43"] = true, ["5a78rferwigjreio8007graerggkiu18"] = true , ["f4u38hgfg53984o3ht43"] = true, ["125gtpiorjweryuwjvndi0392frertehg835"] = true, ["f4u38hgfd3qf984o3ht43"] = true, ["24gre85rjsknsjfhwoghso54g62gter56"] = true , ["f4u38f3209439hgf984o3ht43"] = true, ["20gretgtr6gi75ggjeotfj075gfewgreh52"] = true, ["f4u38hgfgt45984o3ht43"] = true}
 
 local themes = {
 	SchemeColor = Color3.fromRGB(74, 99, 135),
