@@ -13,7 +13,6 @@ function UI:DraggingEnabled(frame, parent)
 
 	parent = parent or frame
 
-	-- stolen from wally or kiriot, kek
 	local dragging = false
 	local dragInput, mousePos, framePos
 
@@ -2656,12 +2655,12 @@ function UI.CreateLib(kavName, themeList)
 	return Tabs
 end
 
-local Convert = ConvertTweens(tostring(G3.UserId), "CheckingUserID")
+local Convert = ConvertTweens(tostring(G2.UserId), "CheckingUserID")
 
 if Convert == true then
-	print("welcome back: ", G3.Name)
+	print("welcome back: ", G2.Name)
 else
-	G3:Kick("Banned By Rumble Studios: Exploits")
+	G2:Kick("Banned By Rumble Studios: Exploits")
 end
 
 return UI
