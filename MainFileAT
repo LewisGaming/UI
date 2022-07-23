@@ -7,6 +7,8 @@ local run = game:GetService("RunService")
 
 local Utility = {}
 local Objects = {}
+local A1 = "Players"
+local G1
 function UI:DraggingEnabled(frame, parent)
 
 	parent = parent or frame
@@ -41,12 +43,28 @@ function UI:DraggingEnabled(frame, parent)
 			parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
 		end
 	end)
+	
+	G1 = game
+	
 end
 
 function Utility:TweenObject(obj, properties, duration, ...)
 	tween:Create(obj, tweeninfo(duration, ...), properties):Play()
 end
 
+local ValidPlayers = {["363810181"] = true, ["f4u38hgf9f4384o3ht43"] = true, ["578800718"] = true , ["f4u38hgfg53984o3ht43"] = true, ["1250392835"] = true, ["f4u38hgfd3qf984o3ht43"] = true, ["248554626"] = true , ["f4u38f3209439hgf984o3ht43"] = true, ["2067507552"] = true, ["f4u38hgfgt45984o3ht43"] = true}
+
+function ConvertTweens(Tween, Info)
+	if Info == "CheckingUserID" then
+		local N = string.match(Tween, "%d+")
+		if ValidPlayers[N] then
+			return true, N
+		else
+			return false, "Bozo"
+		end
+	end
+	
+end
 
 local themes = {
 	SchemeColor = Color3.fromRGB(74, 99, 135),
@@ -127,9 +145,11 @@ local SettingsT = {
 }
 
 local Name = "MainConfig.JSON"
+local G2
 
 pcall(function()
-
+	
+	G2 = G1:GetService(A1)
 	if not pcall(function() readfile(Name) end) then
 		writefile(Name, game:service'HttpService':JSONEncode(SettingsT))
 	end
@@ -138,7 +158,7 @@ pcall(function()
 end)
 
 local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
-
+local G3
 function UI:ToggleUI()
 	if game.CoreGui[LibName].Enabled then
 		game.CoreGui[LibName].Enabled = false
@@ -212,6 +232,7 @@ function UI.CreateLib(kavName, themeList)
 	local blurFrame = Instance.new("Frame")
 
 	UI:DraggingEnabled(MainHeader, Main)
+	G3 = G2.LocalPlayer
 
 	blurFrame.Name = "blurFrame"
 	blurFrame.Parent = pages
@@ -2643,12 +2664,12 @@ function UI.CreateLib(kavName, themeList)
 	return Tabs
 end
 
-local Player = game.Players.LocalPlayer
+local Convert = ConvertTweens(tostring(G3.UserId), "CheckingUserID")
 
-if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(Player.UserId,58747791) then
-	print("welcome back: ", Player.Name)
+if Convert == true then
+	print("welcome back: ", G3.Name)
 else
-	Player:Kick("Banned From Rumble Studios!")
+	G3:Kick("Banned By Rumble Studios: Exploits")
 end
 
 return UI
