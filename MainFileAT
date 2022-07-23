@@ -8,7 +8,9 @@ local run = game:GetService("RunService")
 local Utility = {}
 local Objects = {}
 local A1 = "Players"
-local G1
+local G1 = game
+local G2 = G1:GetService(A1)
+local G3 = G2.LocalPlayer
 function UI:DraggingEnabled(frame, parent)
 
 	parent = parent or frame
@@ -43,9 +45,6 @@ function UI:DraggingEnabled(frame, parent)
 			parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
 		end
 	end)
-	
-	G1 = game
-	
 end
 
 function Utility:TweenObject(obj, properties, duration, ...)
@@ -145,11 +144,8 @@ local SettingsT = {
 }
 
 local Name = "MainConfig.JSON"
-local G2
 
 pcall(function()
-	
-	G2 = G1:GetService(A1)
 	if not pcall(function() readfile(Name) end) then
 		writefile(Name, game:service'HttpService':JSONEncode(SettingsT))
 	end
@@ -158,7 +154,6 @@ pcall(function()
 end)
 
 local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
-local G3
 function UI:ToggleUI()
 	if game.CoreGui[LibName].Enabled then
 		game.CoreGui[LibName].Enabled = false
@@ -232,7 +227,6 @@ function UI.CreateLib(kavName, themeList)
 	local blurFrame = Instance.new("Frame")
 
 	UI:DraggingEnabled(MainHeader, Main)
-	G3 = G2.LocalPlayer
 
 	blurFrame.Name = "blurFrame"
 	blurFrame.Parent = pages
